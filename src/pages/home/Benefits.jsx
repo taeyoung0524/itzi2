@@ -257,53 +257,53 @@ const Benefits = () => {
   };
 
   useEffect(() => {
-  let aborted = false;
-  const controller = new AbortController();
+    let aborted = false;
+    const controller = new AbortController();
 
-  const fetchList = async () => {
-    try {
-      setLoading(true);
-      setError(null);
+    const fetchList = async () => {
+      try {
+        setLoading(true);
+        setError(null);
 
-      // 하드코딩된 URL
-      const url = `https://api.onlyoneprivate.store/promotion/all?orderBy=POPULAR&filters=FOOD`;
-      console.debug("[GET]", url);
+        // 하드코딩된 URL
+        const url = `https://api.onlyoneprivate.store/promotion/all?orderBy=POPULAR&filters=FOOD`;
+        console.debug("[GET]", url);
 
-      const res = await fetch(url, {
-        signal: controller.signal,
-        headers: { Accept: "application/json" },
-      });
+        const res = await fetch(url, {
+          signal: controller.signal,
+          headers: { Accept: "application/json" },
+        });
 
-      if (!res.ok) {
-        const bodyText = await res.text();
-        throw new Error(`HTTP ${res.status} ${res.statusText} — ${bodyText.slice(0, 200)}`);
+        if (!res.ok) {
+          const bodyText = await res.text();
+          throw new Error(`HTTP ${res.status} ${res.statusText} — ${bodyText.slice(0, 200)}`);
+        }
+
+        const data = await res.json();
+        if (aborted) return;
+
+        if (!data?.isSuccess || !Array.isArray(data?.result)) {
+          throw new Error(data?.error?.message || "목록을 가져오지 못했습니다.");
+        }
+
+        const mapped = data.result.map(mapItemToPost);
+        setPosts(mapped);
+        setPage(1);
+      } catch (e) {
+        if (aborted) return;
+        setError(e.message || "목록을 가져오지 못했습니다.");
+        setPosts([]);
+      } finally {
+        if (!aborted) setLoading(false);
       }
+    };
 
-      const data = await res.json();
-      if (aborted) return;
-
-      if (!data?.isSuccess || !Array.isArray(data?.result)) {
-        throw new Error(data?.error?.message || "목록을 가져오지 못했습니다.");
-      }
-
-      const mapped = data.result.map(mapItemToPost);
-      setPosts(mapped);
-      setPage(1);
-    } catch (e) {
-      if (aborted) return;
-      setError(e.message || "목록을 가져오지 못했습니다.");
-      setPosts([]);
-    } finally {
-      if (!aborted) setLoading(false);
-    }
-  };
-
-  fetchList();
-  return () => {
-    aborted = true;
-    controller.abort();
-  };
-}, []); // ✅ 정렬/필터 상태 무시, 최초 1회만 호출
+    fetchList();
+    return () => {
+      aborted = true;
+      controller.abort();
+    };
+  }, []); // ✅ 정렬/필터 상태 무시, 최초 1회만 호출
 
   // 북마크 토글 핸들러
   const toggleBookmark = (id) => {
@@ -330,10 +330,20 @@ const Benefits = () => {
   // ② 정렬 + 필터 + 탭 적용
   const filteredByTab = posts.filter(p => {
     if (activeTab === '전체') return true;
-    if (activeTab === '대학생') return p.audience === '대학생';
-    // 학교 탭
-    return p.univ === activeTab;
+
+    if (activeTab === '대학생') {
+      // 대상에 '대학생'이 들어있거나 audience 값이 '대학생'일 때
+      return p.target?.includes('대학생') || p.audience === '대학생';
+    }
+
+    if (activeTab === userUniv) {
+      // target 문자열에 학교명이 들어가면 포함
+      return p.target?.includes(userUniv) || p.target?.includes('성신여대');
+    }
+
+    return true;
   });
+
 
   const filteredByCategory = filteredByTab.filter(p => {
     if (selectedFilters.includes('전체')) return true;
