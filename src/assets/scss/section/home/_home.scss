@@ -1,0 +1,485 @@
+.Benefits_wrap {
+    width: 1440px;
+
+    .banner_wrap {
+        position: relative;
+
+        .banner_image {
+            width: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slick-dots {
+            position: absolute;
+            bottom: 16px; // 배너 하단에서 간격
+            right: 18.24px; // 오른쪽에서 간격
+            display: flex !important;
+            justify-content: flex-end;
+
+            li {
+                margin: 0 4px;
+                width: 16px;
+                height: 16px;
+
+                button {
+                    width: 16px;
+                    height: 16px;
+                    padding: 0;
+                    border-radius: 50%;
+                    background: #A5A8C3; // 비활성 원 색
+                    border: none;
+                    text-indent: -9999px; // 숫자 숨김
+                }
+
+                &.slick-active button {
+                    background: #fff; // 활성 원 색
+                }
+            }
+        }
+    }
+
+    .here_itzi {
+        display: flex;
+        align-items: center;
+        height: fit-content;
+        justify-content: space-between;
+        padding-top: 53.21px;
+        padding-left: 150.45px;
+        padding-right: 149.55px;
+
+        h3 {
+            font-size: 28px;
+            font-family: 'Pretendard-Regular';
+            font-style: bold;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .search_bar {
+            display: flex;
+            align-items: center;
+            width: 359px;
+            height: fit-content;
+            padding: 12px 10px 12px 19px;
+            border: 1px solid #8B8DA8;
+            border-radius: 100px;
+
+            img {
+                width: 17.42px;
+                height: 17.42px;
+                margin: 0;
+            }
+
+            input {
+                height: 16px;
+                margin: 0;
+                border: none;
+                padding-left: 11px;
+                line-height: 1;
+                box-sizing: border-box;
+
+                &:focus {
+                    outline: none;
+                }
+
+                font-size: 13px;
+                font-weight: 400;
+                font-family: 'Pretendard-Regular';
+            }
+
+            &.active {
+                border-color: #434DFD;
+            }
+
+            // ▼ 검색 "중" 상태(포커스/타이핑)
+            &.searching {
+                border-color: #434DFD;
+            }
+
+            // ▼ 검색어가 존재하는 상태(엔터로 확정된 뒤)
+            //  - 요구사항상 기본 모양 유지 → 별도 스타일 지정하지 않음
+            &.has-value {
+                border-color: #434DFD; // 검색어 입력 완료 후에도 유지할 거면 여기도
+            }
+        }
+    }
+
+    .category {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 42.71px;
+        padding-left: 150.45px;
+        padding-right: 150.3px;
+
+        .category_tabs {
+            display: flex;
+            gap: 24px;
+
+            .tab_btn {
+                background: none;
+                border: none;
+                font-size: 22px;
+                font-weight: 700;
+                font-style: bold;
+                color: #8B8DA8;
+                cursor: pointer;
+            }
+
+            .tab_btn.active {
+                font-size: 22px;
+                font-style: bold;
+                color: #000;
+                font-weight: 700;
+            }
+        }
+
+        .sort {
+            position: relative;
+            padding-top: 7.16px;
+
+            .sort_dropdown {
+                position: relative;
+            }
+
+            .sort_button {
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 15px;
+                font-family: 'Pretendard-Regular';
+                font-size: 15px;
+                font-weight: 500;
+                color: #3A3B4D;
+
+                .caret {
+                    transition: transform .2s ease;
+                    transform: rotate(0deg);
+
+                    &.open {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+
+            .sort_menu {
+                position: absolute;
+                right: 0;
+                top: calc(100% + 8px);
+                min-width: 111px;
+                background: #fff;
+                border-radius: 10px;
+                padding: 8px 7px;
+                z-index: 50;
+                list-style: none;
+                margin: 0;
+                border: 1.5px solid #D9DAEC;
+            }
+
+            .sort_option {
+                text-align: center;
+                padding: 15px 7px;
+                border-radius: 5px;
+                font-size: 15px;
+                font-weight: 400;
+                font-family: 'Pretendard-Regular';
+                color: #3A3B4D;
+                cursor: pointer;
+                transition: background .15s ease, color .15s ease;
+
+                &:hover {
+                    background: #f5f6ff;
+                }
+
+                &.selected {
+                    background: #eef1ff;
+                    color: #3A3B4D;
+                    font-weight: 400;
+                    font-family: 'Pretendard-Regular';
+                }
+            }
+        }
+    }
+
+    .post_filters {
+        display: flex;
+        padding-left: 150px;
+        padding-right: 150px;
+        padding-top: 19.16px;
+
+        .filter_row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            background-color: #EBECFF;
+            border-radius: 15px;
+            padding: 16px 12px;
+        }
+
+        .filter_chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            width: 100%;
+        }
+
+        .chip {
+            appearance: none;
+            background: #fff;
+            border: 1px solid #D9DAEC;
+            color: #535469; // 비활성 글자색
+            font-family: 'Pretendard-Regular';
+            font-size: 15px;
+            font-weight: 500;
+            font-style: medium;
+            padding: 8px 14px;
+            border-radius: 100px;
+            line-height: 1;
+            cursor: pointer;
+            transition: background .15s ease, color .15s ease, border-color .15s ease;
+
+            &.active {
+                background: #434DFD;
+                color: #fff;
+                border-color: transparent;
+                font-family: 'Pretendard-Regular';
+                font-size: 15px;
+                font-weight: 700;
+                font-style: bold;
+            }
+        }
+    }
+
+    .category_content {
+        padding-top: 42.71px;
+        padding-left: 150.45px;
+        padding-right: 148.55px;
+        padding-bottom: 75.65px;
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            row-gap: 40px;
+            column-gap: 32px;
+        }
+
+        .no_posts {
+            grid-column: 1 / -1;
+            padding: 24px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 15px;
+            font-family: 'Pretendard-Regular';
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #D9DAEC;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #fff;
+            transition: box-shadow .2s ease;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .thumb {
+                position: relative;
+
+                .img_wrap {
+                    width: 100%;
+                    height: 116px;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                    }
+                }
+            }
+
+            .badge {
+                position: absolute;
+                top: 10px;
+                left: 12px;
+                background: #fff;
+                color: #434DFD;
+                font-size: 16px;
+                font-weight: 600;
+                padding: 3px 10px;
+                border-radius: 5px;
+                border: 1px solid #D9DAEC;
+            }
+
+            .card_body {
+                display: flex;
+                padding-top: 13.5px;
+                padding-left: 22.27px;
+                padding-right: 10.62px;
+                padding-bottom: 15.58px;
+                flex-direction: column;
+
+                .title_row {
+                    display: flex;
+                    height: fit-content;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-bottom: 6.42px;
+
+                    .title {
+                        font-size: 15px;
+                        font-weight: 700;
+                        font-style: bold;
+                        font-family: 'Pretendard-Regular';
+                        color: #000000;
+                        flex: 1;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    .bookmark_wrap {
+                        display: flex;
+                        align-items: center;
+
+                        .bookmark_count {
+                            font-size: 11px;
+                            font-weight: 600;
+                            font-family: 'Pretendard-Regular';
+                            color: #00DFA5;
+                            padding-right: 6.81px;
+                        }
+
+                        .bookmark_btn {
+                            background: none;
+                            border: none;
+                            padding: 0;
+                            cursor: pointer;
+
+                            img {
+                                width: 14.3px;
+                                height: 18.38px;
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+                .row {
+                    display: flex;
+                    padding-top: 4px;
+                    font-size: 12px;
+                    font-weight: 400;
+                    font-family: 'Pretendard-Regular';
+                    color: #000000;
+
+                    .label {
+                        font-size: 12px;
+                        font-weight: 700;
+                        font-style: bold;
+                        font-family: 'Pretendard-Regular';
+                        color: #000000;
+
+                        padding-right: 8px;
+                    }
+
+                    .section {
+                        font-size: 12px;
+                        font-weight: 700;
+                        font-style: bold;
+                        font-family: 'Pretendard-Regular';
+                        color: #000000;
+
+                        padding-right: 8px;
+                    }
+                }
+            }
+        }
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        /* 숫자 간격 */
+        margin-top: 20px;
+        padding-bottom: 116.38px;
+
+        /* 공통 버튼 기본값 */
+        button {
+            appearance: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #4A4B5C;
+            font-family: 'Pretendard-Regular';
+            font-size: 18px;
+            line-height: 1;
+            padding: 0;
+            transition: color .15s ease, background .15s ease, opacity .15s ease;
+
+            &:disabled {
+                opacity: .35;
+                cursor: default;
+                pointer-events: none;
+            }
+        }
+
+        /* 화살표(아이콘) 버튼 */
+        button:has(img) {
+            padding: 6px;
+            /* 클릭 영역 확보 */
+            border-radius: 50%;
+
+            &:hover {
+                background: #F3F4FF;
+            }
+
+            /* 은은한 호버 */
+            img {
+                width: 18px;
+                height: 18px;
+                display: block;
+            }
+        }
+
+        /* 숫자 버튼(아이콘 없는 버튼) */
+        button:not(:has(img)) {
+            min-width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            display: inline-grid;
+            place-items: center;
+            font-weight: 500;
+        }
+
+        /* 활성 페이지(보라색 원형 배경) */
+        button[aria-current="page"] {
+            display: flex;
+            justify-content: center;
+            background: #7F86FF;
+            color: #EBECFF;
+            font-weight: 500;
+            font-size: 20px;
+            font-style: medium;
+            font-family: 'Pretendard-Regular';
+        }
+
+        /* …(ellipsis) */
+        span {
+            color: #6B6E80;
+            font-size: 18px;
+            padding: 0 2px;
+            user-select: none;
+        }
+    }
+}

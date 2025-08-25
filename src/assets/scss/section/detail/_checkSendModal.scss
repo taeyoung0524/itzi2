@@ -1,0 +1,90 @@
+.checkSendModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* 배경 반투명 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .box{
+        width: 358px;
+        height: 255px;
+        border-radius: 15px;
+        border: 1px solid #D9DAEC;
+        background-color: white;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .header{
+            border-bottom:1px solid #D9DAEC;
+            width:358px;
+            height:70px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            margin:0;
+            h3{
+                font-size: 22px;
+                font-style: normal;
+                font-weight: 600;
+                margin:0;
+            }
+        }
+        .center{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+
+            h3{
+                font-size: 17px;
+                font-style: normal;
+                font-weight: 600;
+                margin:0;
+                padding-bottom:8px;
+                padding-top:35px;
+            }
+            p{
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                color:#535469;
+                margin:0;
+                padding-bottom:35px;
+            }
+        }
+        .bottom{
+            display:flex;
+            width:255px;
+            justify-content: space-between;
+            margin-bottom:20px;
+            
+            .button1{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                width: 120px;
+                height: 40px;
+                border-radius: 7px;
+                background-color: #D9DAEC;
+                cursor: pointer;
+            }
+            .button2{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                width: 120px;
+                height: 40px;
+                background-color: #434DFD;
+                color:white;
+                border-radius: 7px;
+                cursor: pointer;
+            }
+        }
+    }
+    
+}

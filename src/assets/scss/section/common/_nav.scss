@@ -1,0 +1,92 @@
+.nav{
+    width:1440px;
+    position: relative;
+
+    .container{
+        height:51px;
+        display:flex;
+        align-items: center;
+        padding:0 83.1px;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .nav_left{
+        display:flex;
+        gap:38.4px;
+    }
+
+    .nav_right{
+        display:flex;
+        align-items: center;
+    }
+
+    .banner{
+        display:flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .banner1{
+        width: 65px;
+        height: 61.388px;
+    }
+    .banner2{
+        width: 41.386px;
+        height: 23.617px;
+    }
+
+    .button_container{
+        display:flex;
+        gap:22px;
+    }
+
+    .button_container>.tab{
+        display:flex;
+        align-items: center;
+        background: none;
+        border: none;
+        -webkit-appearance: none;
+        appearance: none;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        cursor: pointer;
+        color:#A5A8C3;
+        text-decoration: none;
+    }
+    .button_container>.tab.active {
+        color:#3A3B4D;
+    }
+
+    .button_container>p{
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        color:#3A3B4D;
+    }
+
+    .icon_container{
+        gap:19.23px;
+        display:flex;
+        align-items: center;
+    }
+
+    .icon_container>img{
+        cursor: pointer;
+    }
+    
+    .toggle{
+        position:absolute;
+        top:45px;
+        z-index: 999;
+        right:60px;
+    }
+    .profile{
+        width: 30.331px;
+        height: 31.163px;
+    }
+    .alarm{
+        width: 16.348px;
+        height: 20px;
+    }
+}

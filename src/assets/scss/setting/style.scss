@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+@use "../section/common/main";
+
+// section 
+@use "../section/common/nav";
+@use "../section/common/footer";
+@use "../../scss/section/common/profiledropdown";
+@use "../../scss/section/detail/benefitlist";
+@use "../../scss/section/detail/cooperationlist";
+@use "../../scss/section/detail/cooperationModal";
+@use "../../scss/section/detail/sendModal";
+@use "../../scss/section/detail/checkSendModal";
+@use "../../scss/section/write/write";
+@use "../../scss/section/cooperation/cooperation";
+@use "../../scss/section/proceed/proceed";
+@use "../../scss/section/home/home";
